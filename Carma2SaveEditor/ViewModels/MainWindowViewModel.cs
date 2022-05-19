@@ -526,18 +526,19 @@ namespace Carma2SaveEditor.ViewModels
             {
                 var gameFiles = new string[]
                 {
-                    "RACES.TXT",
-                    "SAVEDGAMES.ARS",
-                    "OPPONENT.TXT"
+                    "carma2.exe",
+                    $"data{Path.DirectorySeparatorChar}RACES.TXT",
+                    $"data{Path.DirectorySeparatorChar}SAVEDGAMES.ARS",
+                    $"data{Path.DirectorySeparatorChar}OPPONENT.TXT"
                 };
 
-                if (gameFiles.Any(file => !File.Exists(Path.Combine(gamePath, "data", file))))
+                if (gameFiles.Any(file => !File.Exists(Path.Combine(gamePath, file))))
                 {
                     var missingFiles = new StringBuilder();
 
                     foreach (var file in gameFiles)
                     {
-                        var combinedPath = Path.Combine(gamePath, "data", file);
+                        var combinedPath = Path.Combine(gamePath, file);
 
                         if (!File.Exists(combinedPath))
                         {
